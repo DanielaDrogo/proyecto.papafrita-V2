@@ -1,0 +1,135 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    color: whitesmoke;
+}
+
+/*~~HEADER~~*/
+header{
+    background-color: #920a00;
+    display: flex;
+    text-decoration: none;
+}
+
+.botonYcarrito{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    
+}
+
+.logo-papafrita{
+    width: 180px;
+    height: 60px;
+}
+
+ul{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+ul li{
+    margin: 10px;
+    list-style: none;
+    align-items: center;
+
+   
+}
+
+.btn.btn-primary{
+    background-color: #4d0000;
+}
+
+#exampleModal{
+    background-color: #8b000028;
+}
+
+.modal-content{
+    background-color: darkred;
+}
+
+.modal-header{
+    background-color: darkred;
+}
+
+.modal-body{
+    background-color: darkred;
+}
+
+.modal-footer{
+    background-color: darkred !important;
+}
+
+
+.carrito{
+    width: 40px;
+    height: 40px;
+    filter: invert(1);
+    padding-right: 10px;
+}
+
+
+/*~~MAIN~~*/
+body{
+    background-color: #222222 !important;
+}
+
+h1{
+    text-align: center;          
+    font-weight: bold;
+    font-size: 40px;
+    padding: 10px;
+    font-style: italic;
+    color: whitesmoke;
+}
+
+.contenedor_producto{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.producto{
+    background: #ff1100;             
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    margin: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.producto:hover{
+        transform: scale(1.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+.imagen_producto{
+    width: 250px;
+    height: 250px;
+    padding-bottom: 10px;
+}
+
+.btn{
+    background-color: #4d0000;
+    color: whitesmoke;
+}
+
+
+
+
+
+/*~~FOOTER~~*/
+footer{
+    background-color: brown;
+    text-align: center;
+    padding: 5px;
+}
