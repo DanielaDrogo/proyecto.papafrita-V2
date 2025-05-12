@@ -25,70 +25,17 @@ let carrito = [];
 // Crear un array con todos los productos
 let productos = [papasGrandes, papasMedianas, papasChicas, chipsGrandes, chipsMedianas, chipsChicas, salchipapa, tortilla, rabas];
   
-  // Crear una función que reciba un objeto producto y cree un elemento div con sus datos
-function crearDivProducto(producto) {
-    // Crear un elemento div
-    let div = document.createElement("div");
-    // Asignar la clase producto al div
-    div.className = "producto";
-    // Crear un elemento img para la imagen del producto
-    let img = document.createElement("img");
-    // Asignar la clase imagen_producto a la img
-    img.className = "imagen_producto";
-    // Asignar el atributo src a la img con el valor de la imagen del producto
-    img.src = producto.imagen;
-    // Asignar el atributo alt a la img con el valor del nombre del producto
-    img.alt = producto.nombre;
-    // Crear un elemento prod para el nombre del producto
-    let prodNombre = document.createElement("prod");
-    // Asignar el texto del prod con el valor del nombre del producto
-    prodNombre.textContent = producto.nombre;
-    // Crear un elemento prod para el precio del producto
-    let prodPrecio = document.createElement("prod");
-    // Asignar el texto del prod con el valor del precio del producto
-    prodPrecio.textContent = "$" + producto.precio;
-}
 
-document.addEventListener("mostrarEnDom", function(){
-    function agregarProductoAlCarrito(producto) {
-    // Convertir el producto a una cadena JSON
-    let productoJSON = JSON.stringify(producto);
-    // Guardar el producto con una clave única basada en su id
-    localStorage.setItem(`producto-${producto.id}`, productoJSON);
-    }
 
-    function mostrarCarrito() {
-        // Obtener el elemento del modal donde se mostrarán los productos
-        let modalBody = document.querySelector(".modal-body");
-        // Vaciar el contenido del modal
-        modalBody.innerHTML = "";
-        // Recorrer todas las claves del localStorage
-        for (let i = 0; i < localStorage.length; i++) {
-        // Obtener la clave actual
-        let clave = localStorage.key(i);
-        // Comprobar si la clave empieza por "producto-"
-        if (clave.startsWith("producto-")) {
-            // Obtener el producto por su clave
-            let productoJSON = localStorage.getItem(clave);
-            // Convertir el producto a un objeto JavaScript
-            let producto = JSON.parse(productoJSON);
-            // Crear un elemento HTML para mostrar el producto
-            let elementoProducto = document.createElement("div");
-            elementoProducto.classList.add("producto");
-            elementoProducto.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h5>${producto.nombre}</h5>
-            <p>${producto.precio} pesos</p>
-            <button class="btn btn-danger" onclick="eliminarProductoDelCarrito(${producto.id})">Eliminar</button>
-            `;
-            // Añadir el elemento al modal
-            modalBody.appendChild(elementoProducto);
-            }
-        }
-    }
 
-    agregarProductoAlCarrito(producto);
-});
+
+
+
+
+
+
+
+
 
 document.getElementById("btn").addEventListener("click",()=>{
     Toastify({
