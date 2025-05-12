@@ -19,6 +19,8 @@ class Producto {
   let salchipapa = new Producto("./imagenes/Salchipapa.jpg", "Salchipapa", 1000);
   let tortilla = new Producto("./imagenes/tortilla-de-papa.jpg", "Tortilla de papas", 1000);
   let rabas = new Producto("./imagenes\Rabas.jpeg", "Rabas", 800);
+
+let carrito = [];
   
 // Crear un array con todos los productos
 let productos = [papasGrandes, papasMedianas, papasChicas, chipsGrandes, chipsMedianas, chipsChicas, salchipapa, tortilla, rabas];
@@ -46,9 +48,6 @@ function crearDivProducto(producto) {
     // Asignar el texto del prod con el valor del precio del producto
     prodPrecio.textContent = "$" + producto.precio;
 }
-
-
-
 
 document.addEventListener("mostrarEnDom", function(){
     function agregarProductoAlCarrito(producto) {
@@ -91,9 +90,6 @@ document.addEventListener("mostrarEnDom", function(){
     agregarProductoAlCarrito(producto);
 });
 
-
-
-  
 document.getElementById("btn").addEventListener("click",()=>{
     Toastify({
         text: "This is a toast",
