@@ -10,24 +10,37 @@ class Producto {
 }
   
 // Crear una instancia de la clase producto para cada producto
-  let papasGrandes = new Producto("./imagenes/Papafritas-grandes.jpg", "Papas fritas paquete grande", 600);
-  let papasMedianas = new Producto("./imagenes/Papafritas-medianas.jpg", "Papas fritas paquete mediano", 400);
-  let papasChicas = new Producto("./imagenes/Papafritas-chicas.jpg", "Papas fritas paquete chico", 200);
-  let chipsGrandes = new Producto("./imagenes/lays_clasicas.png", "papas chips grandes", 200);
-  let chipsMedianas = new Producto("./imagenes/lays_clasicas.png", "papas chips Medianas", 150);
-  let chipsChicas = new Producto("./imagenes/lays_clasicas.png", "papas chips chicas", 100);
-  let salchipapa = new Producto("./imagenes/Salchipapa.jpg", "Salchipapa", 1000);
-  let tortilla = new Producto("./imagenes/tortilla-de-papa.jpg", "Tortilla de papas", 1000);
-  let rabas = new Producto("./imagenes\Rabas.jpeg", "Rabas", 800);
+let productos = [
+  new Producto("./imagenes/Papafritas-grandes.jpg", "Papas fritas paquete grande", 600),
+  new Producto("./imagenes/Papafritas-medianas.jpg", "Papas fritas paquete mediano", 400),
+  new Producto("./imagenes/Papafritas-chicas.jpg", "Papas fritas paquete chico", 200),
+  new Producto("./imagenes/lays_clasicas.png", "Papas chips grandes", 200),
+  new Producto("./imagenes/lays_clasicas.png", "Papas chips medianas", 150),
+  new Producto("./imagenes/lays_clasicas.png", "Papas chips chicas", 100),
+  new Producto("./imagenes/Salchipapa.jpg", "Salchipapa", 1000),
+  new Producto("./imagenes/tortilla-de-papa.jpg", "Tortilla de papas", 1000),
+  new Producto("./imagenes/Rabas.jpeg", "Rabas", 800)
+];
+  
 
 let carrito = [];
   
 // Crear un array con todos los productos
-let productos = [papasGrandes, papasMedianas, papasChicas, chipsGrandes, chipsMedianas, chipsChicas, salchipapa, tortilla, rabas];
+// let productos = [papasGrandes, papasMedianas, papasChicas, chipsGrandes, chipsMedianas, chipsChicas, salchipapa, tortilla, rabas];
   
-
-
-
+function mostrarProductos(productos) {
+    let contenedorDeTarjetas = document.querySelector('.contenedor-productos');
+    productos.forEach((producto, index) => {
+        contenedorDeTarjetas.innerHTML += `
+        <div class="producto">
+            <img src="../imagenes/${producto.imagen}" alt="planta">
+            <h4 class="titulo-decimal">${producto.nombre}</h4>
+            <p class="titulo-quinario">${producto.precio}</p>
+        </div>
+        `;
+    });
+}
+mostrarProductos(productos);
 
 
 
