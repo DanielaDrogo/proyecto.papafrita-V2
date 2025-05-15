@@ -11,31 +11,30 @@ class Producto {
   
 // Crear una instancia de la clase producto para cada producto
 let productos = [
-  new Producto("./imagenes/Papafritas-grandes.jpg", "Papas fritas paquete grande", 600),
-  new Producto("./imagenes/Papafritas-medianas.jpg", "Papas fritas paquete mediano", 400),
-  new Producto("./imagenes/Papafritas-chicas.jpg", "Papas fritas paquete chico", 200),
-  new Producto("./imagenes/lays_clasicas.png", "Papas chips grandes", 200),
-  new Producto("./imagenes/lays_clasicas.png", "Papas chips medianas", 150),
-  new Producto("./imagenes/lays_clasicas.png", "Papas chips chicas", 100),
-  new Producto("./imagenes/Salchipapa.jpg", "Salchipapa", 1000),
-  new Producto("./imagenes/tortilla-de-papa.jpg", "Tortilla de papas", 1000),
-  new Producto("./imagenes/Rabas.jpeg", "Rabas", 800)
+  new Producto("../imagenes/Papafritas-grandes.jpg", "Papas fritas <br> paquete grande", 600),
+  new Producto("../imagenes/Papafritas-medianas.jpg", "Papas fritas <br> paquete mediano", 400),
+  new Producto("../imagenes/Papafritas-chicas.jpg", "Papas fritas <br> paquete chico", 200),
+  new Producto("../imagenes/lays_clasicas.png", "Papas chips grandes", 200),
+  new Producto("../imagenes/lays_clasicas.png", "Papas chips medianas", 150),
+  new Producto("../imagenes/lays_clasicas.png", "Papas chips chicas", 100),
+  new Producto("../imagenes/Salchipapa.jpg", "Salchipapa", 1000),
+  new Producto("../imagenes/tortilla-de-papa.jpg", "Tortilla de papas", 1000),
+  new Producto("../imagenes/Rabas.jpeg", "Rabas", 800)
 ];
   
 
 let carrito = [];
-  
-// Crear un array con todos los productos
-// let productos = [papasGrandes, papasMedianas, papasChicas, chipsGrandes, chipsMedianas, chipsChicas, salchipapa, tortilla, rabas];
+
   
 function mostrarProductos(productos) {
-    let contenedorDeTarjetas = document.querySelector('.contenedor-productos');
+    let contenedorDeTarjetas = document.querySelector('.contenedor_producto');
     productos.forEach((producto, index) => {
         contenedorDeTarjetas.innerHTML += `
         <div class="producto">
-            <img src="../imagenes/${producto.imagen}" alt="planta">
-            <h4 class="titulo-decimal">${producto.nombre}</h4>
-            <p class="titulo-quinario">${producto.precio}</p>
+            <img class="imagen_producto" src="${producto.imagen}" alt="PapaFritaGrande">
+            <h3>${producto.nombre}</h3>
+            <h3>$${producto.precio}</h3>
+            <button class="btn">Agregar producto a carrito</button>
         </div>
         `;
     });
