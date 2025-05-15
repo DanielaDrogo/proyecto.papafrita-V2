@@ -21,11 +21,10 @@ let productos = [
   new Producto("../imagenes/tortilla-de-papa.jpg", "Tortilla de papas", 1000),
   new Producto("../imagenes/Rabas.jpeg", "Rabas", 800)
 ];
-  
 
-let carrito = [];
+// Crear un array para el carrito
+let carrito = []; 
 
-  
 function mostrarProductos(productos) {
     let contenedorDeTarjetas = document.querySelector('.contenedor_producto');
     productos.forEach((producto, index) => {
