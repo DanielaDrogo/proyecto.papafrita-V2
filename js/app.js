@@ -40,6 +40,14 @@ function mostrarProductos(productos) {
 }
 mostrarProductos(productos);
 
+// Función para agregar un producto al carrito
+function agregarAlCarrito(index) {
+    let productoAgregado = productos[index];
+    carrito.push(productoAgregado);
+    console.log(carrito);
+}
+
+
 
 
 
