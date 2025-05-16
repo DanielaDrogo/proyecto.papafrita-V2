@@ -11,15 +11,15 @@ class Producto {
   
 // Crear una instancia de la clase producto para cada producto
 let productos = [
-  new Producto("../imagenes/Papafritas-grandes.jpg", "Papas fritas <br> paquete grande", 600),
-  new Producto("../imagenes/Papafritas-medianas.jpg", "Papas fritas <br> paquete mediano", 400),
-  new Producto("../imagenes/Papafritas-chicas.jpg", "Papas fritas <br> paquete chico", 200),
-  new Producto("../imagenes/lays_clasicas.png", "Papas chips grandes", 200),
-  new Producto("../imagenes/lays_clasicas.png", "Papas chips medianas", 150),
-  new Producto("../imagenes/lays_clasicas.png", "Papas chips chicas", 100),
-  new Producto("../imagenes/Salchipapa.jpg", "Salchipapa", 1000),
-  new Producto("../imagenes/tortilla-de-papa.jpg", "Tortilla de papas", 1000),
-  new Producto("../imagenes/Rabas.jpeg", "Rabas", 800)
+  new Producto("./imagenes/Papafritas-grandes.jpg", "Papas fritas <br> paquete grande", 600),
+  new Producto("./imagenes/Papafritas-medianas.jpg", "Papas fritas <br> paquete mediano", 400),
+  new Producto("./imagenes/Papafritas-chicas.jpg", "Papas fritas <br> paquete chico", 200),
+  new Producto("./imagenes/lays_clasicas.png", "Papas chips grandes", 200),
+  new Producto("./imagenes/lays_clasicas.png", "Papas chips medianas", 150),
+  new Producto("./imagenes/lays_clasicas.png", "Papas chips chicas", 100),
+  new Producto("./imagenes/Salchipapa.jpg", "Salchipapa", 1000),
+  new Producto("./imagenes/tortilla-de-papa.jpg", "Tortilla de papas", 1000),
+  new Producto("./imagenes/Rabas.jpeg", "Rabas", 800)
 ];
 
 // Crear un array para el carrito
