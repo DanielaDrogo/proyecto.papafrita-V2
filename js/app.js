@@ -47,6 +47,11 @@ function agregarAlCarrito(index) {
     console.log(carrito);
 }
 
+// Agregar evento a los botones de agregar al carrito
+let botonesAgregar = document.querySelectorAll('.btn');
+
+
+
 
 
 
