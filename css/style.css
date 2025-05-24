@@ -70,6 +70,19 @@ ul li{
     padding-right: 10px;
 }
 
+.producto-carrito{
+    display: flex;
+    align-items: center;
+}
+
+.btn-eliminar{
+    margin-left: 8px;
+    background-color: #4d0000;
+    color: whitesmoke;
+    width: 70px;
+    height: 30px;
+}
+
 
 /*~~MAIN~~*/
 body{

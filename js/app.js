@@ -45,21 +45,39 @@ function agregarAlCarrito(index) {
     let productoAgregado = productos[index];
     carrito.push(productoAgregado);
     console.log(carrito);
+    actualizarModalCarrito(); // Llamar a la función después de agregar
 }
 
 // Agregar evento a los botones de agregar al carrito
 let botonesAgregar = document.querySelectorAll('.btn');
-
 botonesAgregar.forEach((boton, index) => {
     boton.addEventListener('click', () => {
         agregarAlCarrito(index);
     });
 });
 
+function actualizarModalCarrito() {
+    let modalBody = document.querySelector('.modal-body');
+    modalBody.innerHTML = ""; // Vaciar contenido previo
 
+    if (carrito.length === 0) {
+        modalBody.innerHTML = "<p>Tu carrito está vacío.</p>";
+    } else {
+        carrito.forEach((producto, index) => {
+            modalBody.innerHTML += `
+                <div class="producto-carrito">                   
+                    <p>🍟${producto.nombre} - $${producto.precio}</p> 
+                    <button class="btn-eliminar" onclick="eliminarDelCarrito(${index})">Eliminar</button>  
+                </div>
+            `;
+        });
+    }
+}
 
-
-
+function eliminarDelCarrito(index) {
+    carrito.splice(index, 1); // Quitar el producto del carrito
+    actualizarModalCarrito(); // Actualizar el modal
+}
 
 
 
