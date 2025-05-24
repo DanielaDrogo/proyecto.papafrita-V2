@@ -1,8 +1,6 @@
 // Crear una clase producto
 class Producto {
-    // Definir un método constructor
     constructor(imagen, nombre, precio) {
-      // Inicializar las propiedades del producto
       this.imagen = imagen;
       this.nombre = nombre;
       this.precio = precio;
@@ -40,6 +38,7 @@ function mostrarProductos(productos) {
 }
 mostrarProductos(productos);
 
+
 // Función para agregar un producto al carrito
 function agregarAlCarrito(index) {
     let productoAgregado = productos[index];
@@ -47,6 +46,26 @@ function agregarAlCarrito(index) {
     console.log(carrito);
     actualizarModalCarrito(); // Llamar a la función después de agregar
 }
+
+
+document.getElementById("btn").addEventListener("click",()=>{
+    Toastify({
+        text: "This is a toast",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "left", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+
+})
+
 
 // Agregar evento a los botones de agregar al carrito
 let botonesAgregar = document.querySelectorAll('.btn');
@@ -83,21 +102,5 @@ function eliminarDelCarrito(index) {
 
 
 
-// document.getElementById("btn").addEventListener("click",()=>{
-//     Toastify({
-//         text: "This is a toast",
-//         duration: 3000,
-//         destination: "https://github.com/apvarun/toastify-js",
-//         newWindow: true,
-//         close: true,
-//         gravity: "top", // `top` or `bottom`
-//         position: "left", // `left`, `center` or `right`
-//         stopOnFocus: true, // Prevents dismissing of toast on hover
-//         style: {
-//           background: "linear-gradient(to right, #00b09b, #96c93d)",
-//         },
-//         onClick: function(){} // Callback after click
-//       }).showToast();
 
-// })
 
