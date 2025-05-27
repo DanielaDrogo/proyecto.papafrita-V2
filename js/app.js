@@ -52,8 +52,8 @@ let botonesAgregar = document.querySelectorAll('.btn');
 botonesAgregar.forEach((boton, index) => {
     boton.addEventListener('click', () => {
         agregarAlCarrito(index);
-    });
-    Toastify({
+
+        Toastify({
         text: "This is a toast",
         duration: 3000,
         destination: "https://github.com/apvarun/toastify-js",
@@ -67,6 +67,8 @@ botonesAgregar.forEach((boton, index) => {
         },
         onClick: function(){} // Callback after click
       }).showToast();
+    });
+    
 
 });
 
