@@ -31,7 +31,7 @@ function mostrarProductos(productos) {
             <img class="imagen_producto" src="${producto.imagen}" alt="PapaFritaGrande">
             <h3>${producto.nombre}</h3>
             <h3>$${producto.precio}</h3>
-            <button class="btn">Agregar producto a carrito</button>
+            <button class="btn btn-agregarCarrito">Agregar producto a carrito</button>
         </div>
         `;
     });
@@ -48,7 +48,7 @@ function agregarAlCarrito(index) {
 }
 
 // Agregar evento a los botones de agregar al carrito
-let botonesAgregar = document.querySelectorAll('.btn');
+let botonesAgregar = document.querySelectorAll('.btn-agregarCarrito');
 botonesAgregar.forEach((boton, index) => {
     boton.addEventListener('click', () => {
         agregarAlCarrito(index);
@@ -94,6 +94,22 @@ function eliminarDelCarrito(index) {
     carrito.splice(index, 1); // Quitar el producto del carrito
     actualizarModalCarrito(); // Actualizar el modal
 }
+
+
+function FinalizarCompra(params) {
+    let comprar = document.querySelector(".btn-comprar");
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
+        return;
+    }
+
+    let total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+    alert(`Gracias por tu compra. El total es: $${total}`);
+    carrito = []; // Vaciar el carrito después de la compra
+    actualizarModalCarrito(); // Actualizar el modal
+}
+
+
 
 
 
