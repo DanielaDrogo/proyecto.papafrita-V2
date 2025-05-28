@@ -96,8 +96,9 @@ function eliminarDelCarrito(index) {
 }
 
 
-function FinalizarCompra(params) {
-    let comprar = document.querySelector(".btn-comprar");
+function FinalizarCompra() {
+    let finalizarLaCompra = document.querySelector(".btn-comprar");
+    finalizarLaCompra.innerHTML = "";
     if (carrito.length === 0) {
         alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
         return;
@@ -105,7 +106,7 @@ function FinalizarCompra(params) {
 
     let total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
     alert(`Gracias por tu compra. El total es: $${total}`);
-    carrito = []; // Vaciar el carrito después de la compra
+    // carrito = []; // Vaciar el carrito después de la compra
     actualizarModalCarrito(); // Actualizar el modal
 }
 
