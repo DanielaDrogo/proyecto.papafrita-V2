@@ -60,7 +60,7 @@ botonesAgregar.forEach((boton, index) => {
         newWindow: true,
         close: true,
         gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
+        position: "left", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
           background: "linear-gradient(to right,rgb(148, 0, 0),rgb(48, 29, 0))",
@@ -69,8 +69,25 @@ botonesAgregar.forEach((boton, index) => {
       }).showToast();
     });
     
+    
 
 });
+
+localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito en localStorage
+
+document.addEventListener('DOMContentLoaded', () => {
+    let carritoGuardado = localStorage.getItem("carrito");
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+        actualizarModalCarrito(); // Actualizar el modal con los productos guardados
+    }
+
+    let btnComprar = document.querySelector('.btn-comprar');
+    if (btnComprar) {
+        btnComprar.addEventListener('click', FinalizarCompra);
+    }
+});
+
 
 function actualizarModalCarrito() {
     let modalBody = document.querySelector('.modal-body');
@@ -90,6 +107,9 @@ function actualizarModalCarrito() {
     }
 }
 
+
+
+// Función para eliminar un producto del carrito
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1); // Quitar el producto del carrito
     actualizarModalCarrito(); // Actualizar el modal
@@ -120,25 +140,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
-// document.getElementById("btn").addEventListener("click",()=>{
-//     Toastify({
-//         text: "This is a toast",
-//         duration: 3000,
-//         destination: "https://github.com/apvarun/toastify-js",
-//         newWindow: true,
-//         close: true,
-//         gravity: "top", // `top` or `bottom`
-//         position: "left", // `left`, `center` or `right`
-//         stopOnFocus: true, // Prevents dismissing of toast on hover
-//         style: {
-//           background: "linear-gradient(to right, #00b09b, #96c93d)",
-//         },
-//         onClick: function(){} // Callback after click
-//       }).showToast();
-
-// })
 
