@@ -97,19 +97,27 @@ function eliminarDelCarrito(index) {
 
 
 function FinalizarCompra() {
-    let finalizarLaCompra = document.querySelector(".btn-comprar");
-    finalizarLaCompra.innerHTML = "";
     if (carrito.length === 0) {
         alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
         return;
     }
 
     let total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
-    alert(`Gracias por tu compra. El total es: $${total}`);
-    // carrito = []; // Vaciar el carrito después de la compra
-    actualizarModalCarrito(); // Actualizar el modal
+    alert(`Gracias por tu compra. El total es $${total}.`);
+    
+    // Limpiar el carrito
+    carrito = [];
+    actualizarModalCarrito();
+    
 }
 
+// Conectar el botón "finalizar compra" con la función FinalizarCompra
+document.addEventListener('DOMContentLoaded', () => {
+    let btnComprar = document.querySelector('.btn-comprar');
+    if (btnComprar) {
+        btnComprar.addEventListener('click', FinalizarCompra);
+    }
+});
 
 
 
