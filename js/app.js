@@ -43,6 +43,7 @@ mostrarProductos(productos);
 function agregarAlCarrito(index) {
     let productoAgregado = productos[index];
     carrito.push(productoAgregado);
+    localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito en localStorage
     console.log(carrito);
     actualizarModalCarrito(); // Llamar a la función después de agregar
 }
@@ -68,12 +69,8 @@ botonesAgregar.forEach((boton, index) => {
         onClick: function(){} // Callback after click
       }).showToast();
     });
-    
-    
-
 });
 
-localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito en localStorage
 
 document.addEventListener('DOMContentLoaded', () => {
     let carritoGuardado = localStorage.getItem("carrito");
@@ -113,6 +110,7 @@ function actualizarModalCarrito() {
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1); // Quitar el producto del carrito
     actualizarModalCarrito(); // Actualizar el modal
+    localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito actualizado en localStorage
 }
 
 
@@ -128,8 +126,11 @@ function FinalizarCompra() {
     // Limpiar el carrito
     carrito = [];
     actualizarModalCarrito();
-    
+    localStorage.removeItem("carrito"); // Limpiar localStorage al finalizar la compra
 }
+
+
+
 
 // Conectar el botón "finalizar compra" con la función FinalizarCompra
 document.addEventListener('DOMContentLoaded', () => {
