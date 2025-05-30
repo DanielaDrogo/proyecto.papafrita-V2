@@ -104,8 +104,6 @@ function actualizarModalCarrito() {
     }
 }
 
-
-
 // Función para eliminar un producto del carrito
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1); // Quitar el producto del carrito
@@ -115,8 +113,11 @@ function eliminarDelCarrito(index) {
 
 
 function FinalizarCompra() {
+    let modalBody = document.querySelector('.modal-body');
+    
     if (carrito.length === 0) {
-        alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
+        modalBody.innerHTML = "<p>Tu carrito está vacío. Agrega productos antes de finalizar la compra.</p>";
+        // alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
         return;
     }
 
@@ -128,9 +129,6 @@ function FinalizarCompra() {
     actualizarModalCarrito();
     localStorage.removeItem("carrito"); // Limpiar localStorage al finalizar la compra
 }
-
-
-
 
 // Conectar el botón "finalizar compra" con la función FinalizarCompra
 document.addEventListener('DOMContentLoaded', () => {
