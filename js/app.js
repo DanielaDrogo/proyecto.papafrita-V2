@@ -46,6 +46,14 @@ function agregarAlCarrito(index) {
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito en localStorage
     console.log(carrito);
     actualizarModalCarrito(); // Llamar a la función después de agregar
+
+    // si existe en el producto en el carrito, aumento la cantidad
+        if (carrito.includes(productos[index])) {
+            productos[index].cantidad++
+        } else {
+            productos[index].cantidad++
+            carrito.push(productos[index]);
+        }
 }
 
 // Agregar evento a los botones de agregar al carrito
@@ -109,6 +117,13 @@ function eliminarDelCarrito(index) {
     carrito.splice(index, 1); // Quitar el producto del carrito
     actualizarModalCarrito(); // Actualizar el modal
     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito actualizado en localStorage
+
+    if (carrito[indice].cantidad > 1) {
+        carrito[indice].cantidad--
+    } else {
+        carrito = carrito.filter((productos) => productos.nombre != botonEliminar.value);
+    }
+
 }
 
 
