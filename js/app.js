@@ -40,20 +40,35 @@ mostrarProductos(productos);
 
 
 // Función para agregar un producto al carrito
+// function agregarAlCarrito(index) {
+//     let productoAgregado = productos[index];
+//     carrito.push(productoAgregado);
+//     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito en localStorage
+//     console.log(carrito);
+//     actualizarModalCarrito(); // Llamar a la función después de agregar
+
+//     // si existe en el producto en el carrito, aumento la cantidad
+//         if (carrito.includes(productos[index])) {
+//             productos[index].cantidad++
+//         } else {
+//             productos[index].cantidad++
+//             carrito.push(productos[index]);
+//         }
+// }
+
 function agregarAlCarrito(index) {
     let productoAgregado = productos[index];
-    carrito.push(productoAgregado);
-    localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito en localStorage
-    console.log(carrito);
-    actualizarModalCarrito(); // Llamar a la función después de agregar
+    let productoEnCarrito = carrito.find(item => item.nombre === productoAgregado.nombre);
+    
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad++; // Aumenta la cantidad si ya existe
+    } else {
+        productoAgregado.cantidad = 1; // Establece la cantidad inicial
+        carrito.push(productoAgregado);
+    }
 
-    // si existe en el producto en el carrito, aumento la cantidad
-        if (carrito.includes(productos[index])) {
-            productos[index].cantidad++
-        } else {
-            productos[index].cantidad++
-            carrito.push(productos[index]);
-        }
+    localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar en localStorage
+    actualizarModalCarrito();
 }
 
 // Agregar evento a los botones de agregar al carrito
@@ -104,7 +119,7 @@ function actualizarModalCarrito() {
         carrito.forEach((producto, index) => {
             modalBody.innerHTML += `
                 <div class="producto-carrito">                   
-                    <p>🍟${producto.nombre} - $${producto.precio}</p> 
+                    <p>🍟${producto.nombre} - $${producto.precio} - (${producto.cantidad})</p> 
                     <button class="btn-eliminar" onclick="eliminarDelCarrito(${index})">Eliminar</button>  
                 </div>
             `;
@@ -113,18 +128,31 @@ function actualizarModalCarrito() {
 }
 
 // Función para eliminar un producto del carrito
-function eliminarDelCarrito(index) {
-    carrito.splice(index, 1); // Quitar el producto del carrito
-    actualizarModalCarrito(); // Actualizar el modal
-    localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito actualizado en localStorage
+// function eliminarDelCarrito(index) {
+//     carrito.splice(index, 1); // Quitar el producto del carrito
+//     actualizarModalCarrito(); // Actualizar el modal
+//     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito actualizado en localStorage
 
-    if (carrito[indice].cantidad > 1) {
-        carrito[indice].cantidad--
+//     if (carrito[indice].cantidad > 1) {
+//         carrito[indice].cantidad--
+//     } else {
+//         carrito = carrito.filter((productos) => productos.nombre != botonEliminar.value);
+//     }
+
+// }
+
+function eliminarDelCarrito(index) {
+    if (carrito[index].cantidad > 1) {
+        carrito[index].cantidad--;
     } else {
-        carrito = carrito.filter((productos) => productos.nombre != botonEliminar.value);
+        carrito.splice(index, 1); // Eliminar el producto completamente si solo hay uno
     }
 
+    localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar cambios en localStorage
+    actualizarModalCarrito();
 }
+
+
 
 
 function FinalizarCompra() {
