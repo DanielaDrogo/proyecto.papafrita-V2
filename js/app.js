@@ -38,24 +38,6 @@ function mostrarProductos(productos) {
 }
 mostrarProductos(productos);
 
-
-// Función para agregar un producto al carrito
-// function agregarAlCarrito(index) {
-//     let productoAgregado = productos[index];
-//     carrito.push(productoAgregado);
-//     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito en localStorage
-//     console.log(carrito);
-//     actualizarModalCarrito(); // Llamar a la función después de agregar
-
-//     // si existe en el producto en el carrito, aumento la cantidad
-//         if (carrito.includes(productos[index])) {
-//             productos[index].cantidad++
-//         } else {
-//             productos[index].cantidad++
-//             carrito.push(productos[index]);
-//         }
-// }
-
 function agregarAlCarrito(index) {
     let productoAgregado = productos[index];
     let productoEnCarrito = carrito.find(item => item.nombre === productoAgregado.nombre);
@@ -94,7 +76,6 @@ botonesAgregar.forEach((boton, index) => {
     });
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
     let carritoGuardado = localStorage.getItem("carrito");
     if (carritoGuardado) {
@@ -107,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btnComprar.addEventListener('click', FinalizarCompra);
     }
 });
-
 
 function actualizarModalCarrito() {
     let modalBody = document.querySelector('.modal-body');
@@ -127,20 +107,6 @@ function actualizarModalCarrito() {
     }
 }
 
-// Función para eliminar un producto del carrito
-// function eliminarDelCarrito(index) {
-//     carrito.splice(index, 1); // Quitar el producto del carrito
-//     actualizarModalCarrito(); // Actualizar el modal
-//     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito actualizado en localStorage
-
-//     if (carrito[indice].cantidad > 1) {
-//         carrito[indice].cantidad--
-//     } else {
-//         carrito = carrito.filter((productos) => productos.nombre != botonEliminar.value);
-//     }
-
-// }
-
 function eliminarDelCarrito(index) {
     if (carrito[index].cantidad > 1) {
         carrito[index].cantidad--;
@@ -152,20 +118,21 @@ function eliminarDelCarrito(index) {
     actualizarModalCarrito();
 }
 
-
-
-
 function FinalizarCompra() {
     let modalBody = document.querySelector('.modal-body');
     
     if (carrito.length === 0) {
-        modalBody.innerHTML = "<p>Tu carrito está vacío. Agrega productos antes de finalizar la compra.</p>";
+        modalBody.innerHTML = "<p>Tu carrito está vacío... <br> Agrega productos antes de finalizar la compra.</p>";
         // alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
         return;
     }
 
-    let total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
-    alert(`Gracias por tu compra. El total es $${total}.`);
+    let total = carrito.reduce((acumulador, producto) => acumulador + (producto.precio * producto.cantidad), 0);
+    modalBody.innerHTML = `
+                <p>Gracias por tu compra. El total es $${total}.</p>
+            `;
+
+    console.log(`Gracias por tu compra. El total es $${total}.`);
     
     // Limpiar el carrito
     carrito = [];
@@ -183,3 +150,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// Función para eliminar un producto del carrito
+// function eliminarDelCarrito(index) {
+//     carrito.splice(index, 1); // Quitar el producto del carrito
+//     actualizarModalCarrito(); // Actualizar el modal
+//     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito actualizado en localStorage
+
+//     if (carrito[indice].cantidad > 1) {
+//         carrito[indice].cantidad--
+//     } else {
+//         carrito = carrito.filter((productos) => productos.nombre != botonEliminar.value);
+//     }
+
+// }
+// 
+// // Función para agregar un producto al carrito
+// function agregarAlCarrito(index) {
+//     let productoAgregado = productos[index];
+//     carrito.push(productoAgregado);
+//     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito en localStorage
+//     console.log(carrito);
+//     actualizarModalCarrito(); // Llamar a la función después de agregar
+
+//     // si existe en el producto en el carrito, aumento la cantidad
+//         if (carrito.includes(productos[index])) {
+//             productos[index].cantidad++
+//         } else {
+//             productos[index].cantidad++
+//             carrito.push(productos[index]);
+//         }
+// }
