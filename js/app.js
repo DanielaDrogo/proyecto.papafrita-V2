@@ -136,9 +136,10 @@ function FinalizarCompra() {
     
     // Limpiar el carrito
     carrito = [];
-    actualizarModalCarrito();
     localStorage.removeItem("carrito"); // Limpiar localStorage al finalizar la compra
 }
+
+
 
 // Conectar el botón "finalizar compra" con la función FinalizarCompra
 document.addEventListener('DOMContentLoaded', () => {
