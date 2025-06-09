@@ -78,10 +78,19 @@ ul li{
 .btn-eliminar{
     margin-left: 8px;
     background-color: #4d0000;
-    color: whitesmoke;
+    color: #f5f5f5;
     width: 70px;
     height: 30px;
 }
+
+.swal-title-custom {
+    color: #ffffff !important; /* Color para el título */
+    font-weight: bold;
+}
+.swal-text-custom {
+    color: #ffffff !important; /* Color para el texto */
+}
+
 
 
 /*~~MAIN~~*/

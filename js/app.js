@@ -128,9 +128,23 @@ function FinalizarCompra() {
     }
 
     let total = carrito.reduce((acumulador, producto) => acumulador + (producto.precio * producto.cantidad), 0);
-    modalBody.innerHTML = `
-                <p>Gracias por tu compra. El total es $${total}.</p>
-            `;
+    Swal.fire({
+        title: '¡Gracias por tu compra!',
+        text: `El total es $${total}.`,
+        icon: 'success',
+        colot: 'white',
+        background: '#ff1100',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: ' #4d0000',
+        iconColor: '#00ff00',
+        customClass: {
+            title: 'swal-title-custom',
+            popup: 'swal-popup-custom',
+            icon: 'swal-icon-custom',
+            htmlContainer: 'swal-text-custom'
+        }
+
+    });
 
     console.log(`Gracias por tu compra. El total es $${total}.`);
     
@@ -140,44 +154,3 @@ function FinalizarCompra() {
 }
 
 
-
-// Conectar el botón "finalizar compra" con la función FinalizarCompra
-document.addEventListener('DOMContentLoaded', () => {
-    let btnComprar = document.querySelector('.btn-comprar');
-    if (btnComprar) {
-        btnComprar.addEventListener('click', FinalizarCompra);
-    }
-});
-
-
-
-// Función para eliminar un producto del carrito
-// function eliminarDelCarrito(index) {
-//     carrito.splice(index, 1); // Quitar el producto del carrito
-//     actualizarModalCarrito(); // Actualizar el modal
-//     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito actualizado en localStorage
-
-//     if (carrito[indice].cantidad > 1) {
-//         carrito[indice].cantidad--
-//     } else {
-//         carrito = carrito.filter((productos) => productos.nombre != botonEliminar.value);
-//     }
-
-// }
-// 
-// // Función para agregar un producto al carrito
-// function agregarAlCarrito(index) {
-//     let productoAgregado = productos[index];
-//     carrito.push(productoAgregado);
-//     localStorage.setItem("carrito", JSON.stringify(carrito)); // Guardar el carrito en localStorage
-//     console.log(carrito);
-//     actualizarModalCarrito(); // Llamar a la función después de agregar
-
-//     // si existe en el producto en el carrito, aumento la cantidad
-//         if (carrito.includes(productos[index])) {
-//             productos[index].cantidad++
-//         } else {
-//             productos[index].cantidad++
-//             carrito.push(productos[index]);
-//         }
-// }
