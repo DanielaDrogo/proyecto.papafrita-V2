@@ -40,6 +40,7 @@ mostrarProductos(productos);
 
 function agregarAlCarrito(index) {
     let productoAgregado = productos[index];
+    // let productoAgregado = {...productos[index]};
     let productoEnCarrito = carrito.find(item => item.nombre === productoAgregado.nombre);
     
     if (productoEnCarrito) {
@@ -55,10 +56,10 @@ function agregarAlCarrito(index) {
 
 // Agregar evento a los botones de agregar al carrito
 let botonesAgregar = document.querySelectorAll('.btn-agregarCarrito');
+
 botonesAgregar.forEach((boton, index) => {
     boton.addEventListener('click', () => {
         agregarAlCarrito(index);
-
         Toastify({
         text: "producto agregado al carrito",
         duration: 3000,
@@ -132,7 +133,7 @@ function FinalizarCompra() {
         title: '¡Gracias por tu compra!',
         text: `El total es $${total}.`,
         icon: 'success',
-        colot: 'white',
+        color: 'white',
         background: '#ff1100',
         confirmButtonText: 'Aceptar',
         confirmButtonColor: ' #4d0000',
